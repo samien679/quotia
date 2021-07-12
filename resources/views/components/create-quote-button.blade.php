@@ -1,7 +1,7 @@
 <a {{ $attributes->merge([
   'href' => '/quotes/create',
   'type' => 'submit', 
-  'class' => 'max-w-3xl px-6 bg-green-500'
+  'class' => 'w-1/2 px-6 bg-green-500 p-8 text-center'
 
   ]) }}>
 

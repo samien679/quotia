@@ -15,14 +15,9 @@ class CreateQuotesTable extends Migration
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
-            $table->integer('user');
-            $table->string('client_name');
-            $table->string('client_contact_name');
-            $table->string('client_VAT');
-            $table->string('client_tel');
-            $table->string('client_address');
-            $table->string('client_postcode');
-            $table->string('client_city');
+            $table->integer('user_id');
+            $table->integer('item_id');
+            $table->integer('client_id');
             $table->timestamps();
         });
     }
