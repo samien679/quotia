@@ -22,7 +22,7 @@
                     <!-- Tallenna syötetyt tiedot tietokantaan -->
                     <form method="POST" action="{{ route('quotes.store') }}">
                         @csrf
-                        <div class="flex flex-wrap justify-start">
+                        <div class="flex flex-wrap justify-start ">
 
                         <!-- Lisättävän kulun tuotekoodi -->
                         <div>
@@ -66,12 +66,12 @@
                             <x-input id="hinta" class="flex mt-1" type="text" name="hinta" :value="old('hinta')" required autofocus />
                         </div>
 
-                        <i class="fa fa-plus-circle pt-5 pl-1 flex text-5xl text-blue-600 "></i>
+                        <i class="fa fa-plus pt-7 pl-1 flex text-3xl text-gray-600 "></i>
 
                     </div>
                 </div>
                 <div class="p-6 bg-white border-b border-blue-200 mt-6 text-l flex w-full">
-                    <table class="table-auto bg-green-200 border-collapse border-green-600 w-full text-right ">
+                    <table class="table-auto bg-green-200 border-collapse border-green-600 w-full text-right">
                         <thead>
                           <tr class="text-gray-800">
                             <th class="font-medium border border-green-600 bg-green-600">Tuotekoodi</th>
@@ -94,7 +94,7 @@
                             <td class="border border-green-600">72</td>
                             <td class="border border-green-600 text-center">
 
-                                <i class="fa fa-trash text-red-500 text-xl"></i>
+                                <i class="fa fa-trash text-red-500"></i>
                             </td>
 
                           </tr>
@@ -107,7 +107,7 @@
                             <td class="border border-green-600">3</td>
                             <td class="border border-green-600 text-center">
                                 
-                                <i class="fa fa-trash text-red-500 text-xl"></i>
+                                <i class="fa fa-trash text-red-500"></i>
                             </td>
                           </tr>
                           <tr>
@@ -119,7 +119,7 @@
                             <td class="border border-green-600">12,50</td>
                             <td class="border border-green-600 text-center">
                                 
-                                <i class="fa fa-trash text-red-500 text-xl"></i>
+                                <i class="fa fa-trash text-red-500"></i>
                             </td>
 
                         </tr>
