@@ -23,7 +23,7 @@ class QuoteController extends Controller
      */
     public function create()
     {
-        return view('quote-create');
+        return view('quotes-create');
     }
 
     /**
