@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PurchaseItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Quote;
 
-class QuoteController extends Controller
+class PurchaseItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class QuoteController extends Controller
      */
     public function create()
     {
-        return view('dashboard');
+        //
     }
 
     /**
@@ -36,23 +36,27 @@ class QuoteController extends Controller
      */
     public function store(Request $request)
     {
-        $quote = Quote::create([
-            'user_id' => Auth::user()->id
+        $purchaseItem = PurchaseItem::create([
+            'user_id' => Auth::user()->id,
+            'product_number' => $request->product_number,
+            'name1' => $request->name1,
+            'name2' => $request->name2,
+            'qty' => $request->qty,
+            'unit' => $request->unit,
+            'purchase_price' => $request->purchase_price,
+            'supplier' => $request->supplier
         ]);
 
-        return redirect()->action(
-            [QuoteController::class, 'edit'],
-            ['quote' => $quote]
-        );
+        return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\PurchaseItem  $purchaseItem
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PurchaseItem $purchaseItem)
     {
         //
     }
@@ -60,22 +64,22 @@ class QuoteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\PurchaseItem  $purchaseItem
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(PurchaseItem $purchaseItem)
     {
-        return view('purchase-edit', ['id' => $id]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\PurchaseItem  $purchaseItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, PurchaseItem $purchaseItem)
     {
         //
     }
@@ -83,10 +87,10 @@ class QuoteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\PurchaseItem  $purchaseItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(PurchaseItem $purchaseItem)
     {
         //
     }
