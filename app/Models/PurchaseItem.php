@@ -15,7 +15,7 @@ class PurchaseItem extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
+        'quote_id',
         'product_number',
         'name1',
         'name2',
@@ -25,4 +25,12 @@ class PurchaseItem extends Model
         'supplier'
 
     ];
+
+    /**
+     * Get the connected quote.
+     */
+    public function quote()
+    {
+        return $this->belongsTo(Quote::class);
+    }
 }

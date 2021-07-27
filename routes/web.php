@@ -15,6 +15,8 @@ use App\Http\Controllers\QuoteController;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,4 +29,4 @@ require __DIR__ . '/auth.php';
 
 
 Route::resource('quotes', QuoteController::class);
-Route::resource('purchase_items', PurchaseItemController::class)->only('store', 'destroy');
+Route::resource('purchase_items', PurchaseItemController::class);

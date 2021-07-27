@@ -22,4 +22,12 @@ class Quote extends Model
         'reference1',
         'reference2'
     ];
+
+    /**
+     * Get the cconneted quote.
+     */
+    public function purchaseItems()
+    {
+        return $this->hasMany(PurchaseItem::class);
+    }
 }

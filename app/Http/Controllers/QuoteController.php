@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Quote;
+use App\Models\PurchaseItem;
 
 class QuoteController extends Controller
 {
@@ -37,12 +38,16 @@ class QuoteController extends Controller
     public function store(Request $request)
     {
         $quote = Quote::create([
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
         ]);
+
+        session(['activequote' => $quote->id]);
+
+
 
         return redirect()->action(
             [QuoteController::class, 'edit'],
-            ['quote' => $quote]
+            ['quote' => $quote->id]
         );
     }
 
@@ -54,7 +59,6 @@ class QuoteController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -65,20 +69,9 @@ class QuoteController extends Controller
      */
     public function edit($id)
     {
-        return view('purchase-edit', ['id' => $id]);
+        return view('purchase-edit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

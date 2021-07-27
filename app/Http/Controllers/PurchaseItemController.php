@@ -15,7 +15,9 @@ class PurchaseItemController extends Controller
      */
     public function index()
     {
-        //
+        $purchaseItems = PurchaseItem::all();
+
+        return view('purchase-edit', compact('purchaseItems'));
     }
 
     /**
@@ -37,7 +39,7 @@ class PurchaseItemController extends Controller
     public function store(Request $request)
     {
         $purchaseItem = PurchaseItem::create([
-            'user_id' => Auth::user()->id,
+            'quote_id' => session('activequote'),
             'product_number' => $request->product_number,
             'name1' => $request->name1,
             'name2' => $request->name2,
@@ -47,7 +49,7 @@ class PurchaseItemController extends Controller
             'supplier' => $request->supplier
         ]);
 
-        return back();
+        return view('purchase-edit');
     }
 
     /**
@@ -58,7 +60,8 @@ class PurchaseItemController extends Controller
      */
     public function show(PurchaseItem $purchaseItem)
     {
-        //
+        $purchaseItem = PurchaseItem::find(1);
+        return view('purchase-edit');
     }
 
     /**

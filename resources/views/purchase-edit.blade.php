@@ -97,17 +97,17 @@
                           </tr>
                         </thead>
                         <tbody>
-
-                        @foreach ($purchase_items as $purchase_item)
+                            
+                        @foreach ($purchaseItems as $purchaseItem)
                             
                           <tr>
-                            <td class="py-1 pr-2 border border-green-600">{{ $purchase_item->product_number }}</td>
-                            <td class="py-1 pr-2 border border-green-600">{{ $purchase_item->name1 }}</td>
-                            <td class="py-1 pr-2 border border-green-600">{{ $purchase_item->name2 }}</td>
-                            <td class="py-1 pr-2 border border-green-600">{{ $purchase_item->qty }}</td>
-                            <td class="py-1 pr-2 border border-green-600">{{ $purchase_item->unit }}</td>
-                            <td class="py-1 pr-2 border border-green-600">{{ $purchase_item->purchase_price }}</td>
-                            <td class="py-1 pr-2 border border-green-600">{{ $purchase_item->supplier }}</td>
+                            <td class="py-1 pr-2 border border-green-600">{{ $purchaseItem->product_number }}</td>
+                            <td class="py-1 pr-2 border border-green-600">{{ $purchaseItem->name1 }}</td>
+                            <td class="py-1 pr-2 border border-green-600">{{ $purchaseItem->name2 }}</td>
+                            <td class="py-1 pr-2 border border-green-600">{{ $purchaseItem->qty }}</td>
+                            <td class="py-1 pr-2 border border-green-600">{{ $purchaseItem->unit }}</td>
+                            <td class="py-1 pr-2 border border-green-600">{{ $purchaseItem->purchase_price }}</td>
+                            <td class="py-1 pr-2 border border-green-600">{{ $purchaseItem->supplier }}</td>
                             <td class="text-center py-1 pr-2  border border-green-600">
                                 <i class="text-red-500 fa fa-trash"></i>
                             </td>
