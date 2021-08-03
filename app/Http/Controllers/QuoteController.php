@@ -38,7 +38,7 @@ class QuoteController extends Controller
     public function store(Request $request)
     {
         $quote = Quote::create([
-            'user_id' => Auth::user()->id,
+            'user_id' => Auth::user()->id
         ]);
 
         session(['activequote' => $quote->id]);
@@ -69,7 +69,10 @@ class QuoteController extends Controller
      */
     public function edit($id)
     {
-        return view('purchase-edit');
+        session(['activequote' => $id]);
+
+        $purchaseItems = PurchaseItem::all()->where('quote_id', $id);
+        return view('purchase-edit', compact('purchaseItems'));
     }
 
 

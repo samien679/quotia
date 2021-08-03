@@ -49,7 +49,9 @@ class PurchaseItemController extends Controller
             'supplier' => $request->supplier
         ]);
 
-        return view('purchase-edit');
+        //return view('purchase-edit');
+
+        return redirect()->back();
     }
 
     /**
@@ -58,9 +60,9 @@ class PurchaseItemController extends Controller
      * @param  \App\Models\PurchaseItem  $purchaseItem
      * @return \Illuminate\Http\Response
      */
-    public function show(PurchaseItem $purchaseItem)
+    public function show($id)
     {
-        $purchaseItem = PurchaseItem::find(1);
+        $purchaseItem = PurchaseItem::find($id);
         return view('purchase-edit');
     }
 
