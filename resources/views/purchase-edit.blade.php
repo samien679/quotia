@@ -19,7 +19,7 @@
 
                 <div class="p-6 mt-6 bg-white border-b border-gray-200 ">
                     
-                    <!-- Lähetä lomake tallennettavaksi tietokantaan -->
+                    <!-- Uuden ostorivin lisääminen tietokantaan -->
                     <form method="POST" action="{{ route('purchase_items.store') }}">
                         @csrf
                         <div class="flex flex-wrap justify-start ">
@@ -109,7 +109,14 @@
                             <td class="py-1 pr-2 border border-green-600">{{ $purchaseItem->purchase_price }}</td>
                             <td class="py-1 pr-2 border border-green-600">{{ $purchaseItem->supplier }}</td>
                             <td class="text-center py-1 pr-2  border border-green-600">
-                                <i class="text-red-500 fa fa-trash"></i>
+
+                                <!-- Lomake rivin poistamiseksi -->
+                                <form method="POST" action="{{ route('purchase_items.destroy', $purchaseItem->id) }}">
+                                @csrf
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="text-red-500 fa fa-trash"></button>
+                                </form>
+
                             </td>
                           </tr>
                           
