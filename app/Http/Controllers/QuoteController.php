@@ -16,7 +16,9 @@ class QuoteController extends Controller
      */
     public function index()
     {
-        //
+        $quotes = Quote::all()->where('user_id', Auth::user()->id);
+
+        return view('dashboard', compact('quotes'));
     }
 
     /**
@@ -72,6 +74,7 @@ class QuoteController extends Controller
         session(['activequote' => $id]);
 
         $purchaseItems = PurchaseItem::all()->where('quote_id', $id);
+
         return view('purchase-edit', compact('purchaseItems'));
     }
 

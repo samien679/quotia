@@ -15,7 +15,7 @@ class CreateQuotesTable extends Migration
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->integer('purchase_item')->nullable();
             $table->integer('quote_item')->nullable();
             $table->integer('client_id')->nullable();
