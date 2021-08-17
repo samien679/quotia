@@ -4,6 +4,9 @@ use App\Http\Controllers\PurchaseItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuoteItemController;
+use App\Http\Controllers\PDFController;
+use App\Models\Quote;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +38,6 @@ Route::resource('quotes', QuoteController::class);
 
 Route::resource('purchase_items', PurchaseItemController::class);
 Route::resource('quote_items', QuoteItemController::class);
+
+// PDF generator
+Route::get('/quotes/{quote}/getpdf', [PDFController::class, 'generate']);
