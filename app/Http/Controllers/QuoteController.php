@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Quote;
 use App\Models\PurchaseItem;
+use App\Models\QuoteItem;
+
 
 class QuoteController extends Controller
 {
@@ -32,7 +34,7 @@ class QuoteController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new quote and persist it in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -48,7 +50,7 @@ class QuoteController extends Controller
 
 
         return redirect()->action(
-            [QuoteController::class, 'edit'],
+            [QuoteController::class, 'purchaseEdit'],
             ['quote' => $quote->id]
         );
     }
@@ -61,21 +63,44 @@ class QuoteController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the view for editing the specified quotes purchase items.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function purchaseEdit($id)
     {
         session(['activequote' => $id]);
 
         $purchaseItems = PurchaseItem::all()->where('quote_id', $id);
 
         return view('purchase-edit', compact('purchaseItems'));
+    }
+
+    /**
+     * Show the view for editing the specified quotes quote/sales items.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function salesEdit($id)
+    {
+        session(['activequote' => $id]);
+
+        // Hae tietokannasta aktiivisen tarjouksen kulurivit
+        $purchaseItems = PurchaseItem::where('quote_id', $id)->get();
+
+        // Hae tietokannasta aktiivisen tarjouksen tarjousrivit
+        $quoteItems = QuoteItem::where('quote_id', $id)->get();
+
+        // Kaikkien rivien loppusumman yhteenlasku
+        $sumOfQuote = $quoteItems->sum('item_value');
+
+        return view('sales-edit', compact('purchaseItems', 'quoteItems', 'sumOfQuote'));
     }
 
 

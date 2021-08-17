@@ -33,7 +33,7 @@
                                     @foreach ($quotes as $quote)
                                         <li class="p-3 hover:bg-blue-600 hover:text-blue-200">
 
-                                        <a href="{{ route('quotes.edit', $quote->id) }}">Tarjous no. {{ $quote->id }}, luotu {{ $quote->created_at }}</a>
+                                        <a href="{{ route('purchase-edit', $quote->id) }}">Tarjous no. {{ $quote->id }}, luotu {{ $quote->created_at }}</a>
                                     </li>
                                    @endforeach
 

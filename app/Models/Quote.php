@@ -24,10 +24,18 @@ class Quote extends Model
     ];
 
     /**
-     * Get the cconneted quote.
+     * Get the conneted purchase items.
      */
     public function purchaseItems()
     {
         return $this->hasMany(PurchaseItem::class);
+    }
+
+    /**
+     * Get the conneted quote items.
+     */
+    public function quoteItems()
+    {
+        return $this->hasMany(QuoteItem::class);
     }
 }

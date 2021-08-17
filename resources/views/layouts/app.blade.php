@@ -21,6 +21,8 @@
     </head>
     <body class="font-sans antialiased text-l">
         <div class="min-h-screen bg-gray-100">
+            @include('layouts.messages')
+
             @include('layouts.navigation')
 
             <!-- Page Heading -->

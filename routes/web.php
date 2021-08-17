@@ -3,6 +3,7 @@
 use App\Http\Controllers\PurchaseItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\QuoteItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,9 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-
+Route::get('/quotes/{quote}/purchase-edit', [QuoteController::class, 'purchaseEdit'])->name('purchase-edit');
+Route::get('/quotes/{quote}/sales-edit', [QuoteController::class, 'salesEdit'])->name('sales-edit');
 Route::resource('quotes', QuoteController::class);
+
 Route::resource('purchase_items', PurchaseItemController::class);
+Route::resource('quote_items', QuoteItemController::class);

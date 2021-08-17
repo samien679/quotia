@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PurchaseItem;
+use App\Models\QuoteItem;
 use Illuminate\Http\Request;
-use App\Http\Requests\StorePurchaseItemRequest;
+use App\Http\Requests\StoreQuoteItemRequest;
 
-use Illuminate\Support\Facades\Auth;
-
-class PurchaseItemController extends Controller
+class QuoteItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +15,7 @@ class PurchaseItemController extends Controller
      */
     public function index()
     {
-        $purchaseItems = PurchaseItem::all();
-
-        return view('purchase-edit', compact('purchaseItems'));
+        //
     }
 
     /**
@@ -33,26 +29,26 @@ class PurchaseItemController extends Controller
     }
 
     /**
-     * Store a new purchase item.
+     * Store a new quote item.
      *
-     * @param  \App\Http\Requests\StorePurchaseItemRequest  $request
+     * @param  \App\Http\Requests\StoreQuoteItemRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePurchaseItemRequest $request)
+    public function store(StoreQuoteItemRequest $request)
     {
-        
-        $purchaseItem = PurchaseItem::create([
+
+        $quoteItem = QuoteItem::create([
             'quote_id' => session('activequote'),
             'product_number' => $request->product_number,
             'name1' => $request->name1,
             'name2' => $request->name2,
             'qty' => $request->qty,
             'unit' => $request->unit,
-            'purchase_price' => $request->purchase_price,
-            'supplier' => $request->supplier
+            'quote_price' => $request->quote_price,
+            'vat' => $request->vat,
+            'note' => $request->note
         ]);
 
-        //return view('purchase-edit');
 
         return redirect()->back();
     }
@@ -60,22 +56,21 @@ class PurchaseItemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PurchaseItem  $purchaseItem
+     * @param  \App\Models\QuoteItem  $quoteItem
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(QuoteItem $quoteItem)
     {
-        $purchaseItem = PurchaseItem::find($id);
-        return view('purchase-edit');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PurchaseItem  $purchaseItem
+     * @param  \App\Models\QuoteItem  $quoteItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(PurchaseItem $purchaseItem)
+    public function edit(QuoteItem $quoteItem)
     {
         //
     }
@@ -84,10 +79,10 @@ class PurchaseItemController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PurchaseItem  $purchaseItem
+     * @param  \App\Models\QuoteItem  $quoteItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PurchaseItem $purchaseItem)
+    public function update(Request $request, QuoteItem $quoteItem)
     {
         //
     }
@@ -95,12 +90,12 @@ class PurchaseItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PurchaseItem  $purchaseItem
+     * @param  \App\Models\QuoteItem  $quoteItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PurchaseItem $purchaseItem)
+    public function destroy(QuoteItem $quoteItem)
     {
-        $purchaseItem->delete();
+        $quoteItem->delete();
 
         return redirect()->back();
     }

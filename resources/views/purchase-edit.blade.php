@@ -44,7 +44,7 @@
                         <!-- Lisättävä määrä -->
                         <div>
                             <x-label for="qty" :value="__('Määrä')" />
-                            <x-input id="qty" class="flex mt-1" type="number" name="qty" :value="old('qty')" />
+                            <x-input id="qty" class="flex mt-1" type="number" step="0.01" name="qty" :value="old('qty')" />
                         </div>
 
                         <!-- Yksikkö -->
@@ -56,7 +56,7 @@
                         <!-- Hankintahinta / yksikkö -->
                         <div>
                             <x-label for="purchase_price" :value="__('Kulu € / yksikkö')" />
-                            <x-input id="purchase_price" class="flex mt-1" type="number" name="purchase_price" :value="old('purchase_price')" />
+                            <x-input id="purchase_price" class="flex mt-1" type="number" step="0.01" name="purchase_price" :value="old('purchase_price')" />
                         </div>
 
                         <!-- Tukkuri -->
