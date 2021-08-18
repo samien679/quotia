@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Quote;
-use App\Models\PurchaseItem;
-use App\Models\QuoteItem;
-
 use Illuminate\Http\Request;
 
-
+use App\Models\Quote;
+use App\Models\QuoteItem;
 
 use Barryvdh\DomPDF\Facade as PDF;
 

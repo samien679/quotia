@@ -3,24 +3,15 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Carbon\Traits\Date;
+use DateTime;
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Quote extends Model
 {
     use HasFactory;
-
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $dates = [
-        'created_at',
-        'updated_at'
-
-    ];
 
     /**
      * The attributes that are mass assignable.
@@ -35,6 +26,36 @@ class Quote extends Model
         'reference1',
         'reference2'
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'created_at' => 'date:Y-m-d',
+        'updated_at' => 'date:Y-m-d',
+        'due_date' => 'date:Y-m-d',
+        'created' => 'date'
+
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'created',
+        'due_date'
+
+
+    ];
+
+
+
 
     /**
      * Get the conneted purchase items.
@@ -63,8 +84,7 @@ class Quote extends Model
 
         $date = $this->created_at;
 
-        $date->format("M-Y");
-        return $date;
+        return $date->toDateString();
     }
 
     /**
@@ -78,7 +98,6 @@ class Quote extends Model
 
         $dueDate = clone ($this->created_at->addDays(30));
 
-        $dueDate->format("M-Y");
-        return $dueDate;
+        return $dueDate->toDateString();
     }
 }

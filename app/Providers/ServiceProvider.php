@@ -1,7 +1,12 @@
 <?php
+
 namespace Barryvdh\DomPDF;
 
+use Barryvdh\DomPDF\PDF;
+
 use Dompdf\Dompdf;
+use Cpdf;
+
 use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
@@ -24,10 +29,10 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     public function register()
     {
-        $configPath = __DIR__.'/../config/dompdf.php';
+        $configPath = __DIR__ . '/../config/dompdf.php';
         $this->mergeConfigFrom($configPath, 'dompdf');
 
-        $this->app->bind('dompdf.options', function(){
+        $this->app->bind('dompdf.options', function () {
             $defines = $this->app['config']->get('dompdf.defines');
 
             if ($defines) {
@@ -41,10 +46,9 @@ class ServiceProvider extends IlluminateServiceProvider
             }
 
             return $options;
-
         });
 
-        $this->app->bind('dompdf', function() {
+        $this->app->bind('dompdf', function () {
 
             $options = $this->app->make('dompdf.options');
             $dompdf = new Dompdf($options);
@@ -57,7 +61,6 @@ class ServiceProvider extends IlluminateServiceProvider
         $this->app->bind('dompdf.wrapper', function ($app) {
             return new PDF($app['dompdf'], $app['config'], $app['files'], $app['view']);
         });
-
     }
 
     /**
@@ -72,8 +75,8 @@ class ServiceProvider extends IlluminateServiceProvider
 
     public function boot()
     {
-        if (! $this->isLumen()) {
-            $configPath = __DIR__.'/../config/dompdf.php';
+        if (!$this->isLumen()) {
+            $configPath = __DIR__ . '/../config/dompdf.php';
             $this->publishes([$configPath => config_path('dompdf.php')], 'config');
         }
     }
@@ -87,5 +90,4 @@ class ServiceProvider extends IlluminateServiceProvider
     {
         return array('dompdf', 'dompdf.options', 'dompdf.wrapper');
     }
-
 }
