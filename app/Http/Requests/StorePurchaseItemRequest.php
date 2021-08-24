@@ -24,12 +24,12 @@ class StorePurchaseItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_number' => 'nullable|max:30',
-            'name1' => 'nullable|max:35',
-            'name2' => 'nullable|max:35',
-            'qty' => 'numeric|max:99',
+            'product_number' => 'nullable|string|max:30',
+            'name1' => 'nullable|string|max:35',
+            'name2' => 'nullable|string|max:35',
+            'qty' => 'numeric|max:99999',
             'unit' => 'string|max:3',
-            'purchase_price' => 'numeric|max:99',
+            'purchase_price' => 'numeric|max:99999',
             'supplier' => 'nullable|string|max:25'
         ];
     }

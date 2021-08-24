@@ -23,7 +23,7 @@ class CreateQuoteItemsTable extends Migration
             $table->string('unit')->nullable();
             $table->float('quote_price');
             $table->float('vat');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

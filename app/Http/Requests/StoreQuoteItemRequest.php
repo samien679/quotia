@@ -24,14 +24,14 @@ class StoreQuoteItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_number' => 'nullable|max:30',
-            'name1' => 'nullable|max:35',
-            'name2' => 'nullable|max:35',
-            'qty' => 'numeric|max:20',
+            'product_number' => 'nullable|string|max:30',
+            'name1' => 'nullable|string|max:35',
+            'name2' => 'nullable|string|max:35',
+            'qty' => 'numeric|max:99999',
             'unit' => 'string|max:3',
-            'quote_price' => 'numeric|max:99',
-            'vat' => 'numeric|max:25',
-            'note' => 'string|max:50'
+            'quote_price' => 'numeric|max:99999',
+            'vat' => 'numeric|max:99',
+            'note' => 'nullable|string|max:50'
         ];
     }
 }

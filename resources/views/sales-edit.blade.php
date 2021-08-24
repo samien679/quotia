@@ -64,7 +64,7 @@
    
                            </tbody>
                          </table>
-                    <div class="pt-8">
+                    <div class="mt-8">
                 <!-- Lomake uuden tarjousrivin lisäämiseksi tietokantaan -->
                     <form method="POST" action="{{ route('quote_items.store') }}">
                         @csrf

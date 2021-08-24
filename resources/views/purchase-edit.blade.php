@@ -14,14 +14,14 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    Lisää tarjottavan työn toteutuessa toteutuvat henkilöstö -ja materiaalikustannukset. Erittele ainakin työtunnit ja materiaalit omille riveilleen. 
+                    Lisää tarjottavan työn toteutuessa toteutuvat henkilöstö -ja materiaalikustannukset
 
                 <div class="mt-10">
                     
                     <!-- Uuden ostorivin lisääminen tietokantaan -->
                     <form method="POST" action="{{ route('purchase_items.store') }}">
                         @csrf
-                        <div class="flex flex-wrap justify-start ">
+                        <div class="flex flex-wrap justify-start border rounded-lg shadow-sm p-3">
 
                         <!-- Lisättävän kulun tuotekoodi -->
                         <div>
@@ -118,11 +118,14 @@
                       </table>
 
                         <!-- Advance -button -->
-                        <div class="pt-6">
+                        <div class="mt-10">
                             Kun olet syöttänyt kulut taulukkoon siirry seuraavaan vaiheeseen valitsemalla
-                            <x-quotia.button class="ml-2">
-                                {{ __('Jatka') }}
-                            </x-quotia.button>
+                            <a 
+                            href="{{ route('sales-edit', session('activequote')) }}"
+                            class="border rounded-md p-2 ml-3 mt-3 bg-blue-400"
+                            >
+                                Jatka
+                            </a>
                         </div>
 
                     </div>
