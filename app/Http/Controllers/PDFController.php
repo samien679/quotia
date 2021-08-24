@@ -24,6 +24,7 @@ class PDFController extends Controller
 
     public function generate($quote)
     {
+        session(['activequote' => $quote]);
         PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
         $quoteInfo = Quote::findOrFail($quote);
         $quoteItems = QuoteItem::where('quote_id', $quote)->get();

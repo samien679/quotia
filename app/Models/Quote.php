@@ -100,4 +100,22 @@ class Quote extends Model
 
         return $dueDate->toDateString();
     }
+
+    /**
+     * Get quote's total value w/o VAT
+     *
+     * 
+     * @return float
+     */
+    public function getSumZeroVatAttribute()
+    {
+
+        // Hae tietokannasta aktiivisen tarjouksen tarjousrivit
+        $quoteItems = QuoteItem::where('quote_id', session('activequote'))->get();
+
+        // Kaikkien rivien loppusumman yhteenlasku
+        $sumOfQuote = $quoteItems->sum('item_value');
+
+        return $sumOfQuote;
+    }
 }

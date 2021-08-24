@@ -7,7 +7,7 @@
 
 <x-slot name="info">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-             {{ __('Yhteensä: ') }}{{ $sumOfQuote }}{{ __('€ alv0%') }}
+             {{ __('Yhteensä: ') }}<strong>{{ $sumOfQuote }}</strong>{{ __('€ alv0%') }}
     </x-slot>
 
     <div class="py-12">
@@ -25,8 +25,7 @@
                              <tr class="font-bold text-gray-800">  
                                 <th class="w-1/6 py-1 pr-2 bg-blue-400 border border-blue-600 text-center">Kulurivit</th>      
                                 <th class="py-1 pr-2 bg-blue-500 border border-blue-600 text-right">Tuotekoodi</th>
-                                <th class="py-1 pr-2 bg-blue-500 border border-blue-600 text-right">Nimike 1</th>
-                                <th class="py-1 pr-2 bg-blue-500 border border-blue-600 text-right">Nimike 2</th>
+                                <th class="py-1 pr-2 bg-blue-500 border border-blue-600 text-right">Nimike</th>
                                 <th class="py-1 pr-2 bg-blue-500 border border-blue-600 text-right">Määrä</th>
                                 <th class="py-1 pr-2 bg-blue-500 border border-blue-600 text-right">á</th>
                                 <th class="py-1 pr-2 bg-blue-500 border border-blue-600 text-right">Rivi</th>
@@ -42,8 +41,7 @@
                              <tr>
                                  <td class="py-1 pr-2  border-blue-600"></td>
                                <td class="py-1 pr-2 border border-blue-600">{{ $purchaseItem->product_number }}</td>
-                               <td class="py-1 pr-2 border border-blue-600">{{ $purchaseItem->name1 }}</td>
-                               <td class="py-1 pr-2 border border-blue-600">{{ $purchaseItem->name2 }}</td>
+                               <td class="py-1 pr-2 border border-blue-600">{{ $purchaseItem->name1 }} {{ $purchaseItem->name2 }}</td>
                                <td class="py-1 pr-2 border border-blue-600">{{ $purchaseItem->qty }} {{ $purchaseItem->unit }}</td>
                                <td class="py-1 pr-2 border border-blue-600">{{ $purchaseItem->purchase_price }}€</td>
                                <td class="py-1 pr-2 border border-blue-600">{{ $purchaseItem->purchase_price * $purchaseItem->qty }}€</td>
@@ -64,6 +62,10 @@
    
                            </tbody>
                          </table>
+
+                         
+
+                         
                     <div class="mt-8">
                 <!-- Lomake uuden tarjousrivin lisäämiseksi tietokantaan -->
                     <form method="POST" action="{{ route('quote_items.store') }}">
@@ -131,8 +133,7 @@
                              <tr class="font-bold text-gray-800">        
                             <th class="w-1/6  py-1 pr-2 bg-green-400 border border-green-600 text-center">Tarjousrivit</th>
                             <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Tuotekoodi</th>
-                            <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Nimike 1</th>
-                            <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Nimike 2</th>
+                            <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Nimike</th>
                             <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Määrä</th>
                             <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">á</th>
                             <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Riviarvo</th>
@@ -149,8 +150,7 @@
                              <tr class="pt-3">
                                  <td class="py-1 pr-2 border border-green-600"></td>
                                <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->product_number }}</td>
-                               <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->name1 }}</td>
-                               <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->name2 }}</td>
+                               <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->name1 }}{{ $quoteItem->name2 }}</td>
                                <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->qty }} {{ $quoteItem->unit }}</td>
                                <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->quote_price }}{{ __(' €') }}</td>
                                <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->item_value }}{{ __(' €') }}</td>

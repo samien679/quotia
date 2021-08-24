@@ -32,6 +32,9 @@
                     {{ $info }}
                     </div>
                     <div class="">
+                    {{__('Optional slot')}}
+                    </div>
+                    <div class="">
                     {{ $header }}
                     </div>
                 </div>

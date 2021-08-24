@@ -15,7 +15,8 @@ class QuoteItem extends Model
      * @var array
      */
     protected $casts = [
-        'item_value' => 'float'
+        'item_value' => 'float',
+        'item_value_with_vat' => 'decimal:2'
     ];
 
     /**
@@ -52,5 +53,18 @@ class QuoteItem extends Model
     public function getItemValueAttribute()
     {
         return $this->qty * $this->quote_price;
+    }
+
+    /**
+     * Get the sales value (qty * price) of item, including alv
+     *
+     * 
+     * @return float
+     */
+    public function getItemValueWithVatAttribute()
+    {
+        $vat = $this->vat / 100 + 1;
+
+        return $vat * $this->quote_price * $this->qty;
     }
 }

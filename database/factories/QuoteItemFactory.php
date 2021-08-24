@@ -22,7 +22,10 @@ class QuoteItemFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'product_number' => $this->faker->randomNumber(12),
+            'name1' => $this->faker->word,
+            'name2' => $this->faker->word,
+            'qty' => $this->faker->word
         ];
     }
 }
