@@ -34,6 +34,22 @@
                     </x-slot>
 
                     <x-slot name="content">
+
+                        <!-- PDF-export of current quote -->
+                        @if (session('activequote'))
+
+                            <form method="GET" action="{{ route('getpdf', session('activequote')) }}">
+                                @csrf
+
+                                <x-dropdown-link :href="route('getpdf', session('activequote'))"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Export PDF') }}
+                                </x-dropdown-link>
+                            </form>
+
+                        @endif
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

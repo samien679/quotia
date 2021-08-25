@@ -10,14 +10,13 @@
              {{ __('Yhteensä: ') }}<strong>{{ $sumOfQuote }}</strong>{{ __('€ alv0%') }}
     </x-slot>
 
-    <div class="pt-10">
+    <div class="mt-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    Lisää seuraavaksi tarjoukselle tulostuvat rivit ja määrittele niille haluamasi hinnoittelu.
 
                 <!-- Taulukko jossa syötetyt rivit -->
-                    <div class="pt-4">
+                    <div>
                         <table class="w-full text-right bg-green-200 border-collapse border-green-600 table-auto shadow-md">
                            <thead>
                              <tr class="font-bold text-gray-800">        
@@ -72,11 +71,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    
+                    Lisää tarjoukselle haluamasi rivit ja määrittele niille hinnoittelu.
+
                 <!-- Lomake uuden tarjousrivin lisäämiseksi tietokantaan -->
                     <form method="POST" action="{{ route('quote_items.store') }}">
                         @csrf
-                        <div class="flex flex-wrap justify-start border rounded-lg shadow-sm p-3">
+                        <div class="flex flex-wrap justify-start border rounded-lg shadow-sm p-3 mt-4">
 
                         <!-- Lisättävän rivin tuotekoodi -->
                         <div>

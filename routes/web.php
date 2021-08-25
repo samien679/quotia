@@ -39,4 +39,4 @@ Route::resource('quotes', QuoteController::class)->middleware('auth');
 Route::resource('quote_items', QuoteItemController::class)->middleware('auth');
 
 // PDF generator
-Route::get('/quotes/{quote}/getpdf', [PDFController::class, 'generate'])->middleware('auth');
+Route::get('/quotes/{quote}/getpdf', [PDFController::class, 'generate'])->middleware('auth')->name('getpdf');
