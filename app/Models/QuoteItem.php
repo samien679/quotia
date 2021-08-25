@@ -54,7 +54,8 @@ class QuoteItem extends Model
      */
     public function getItemValueAttribute()
     {
-        return $this->qty * $this->quote_price;
+        $itemValue = $this->qty * $this->quote_price;
+        return number_format($itemValue, 2);
     }
 
     /**
@@ -80,8 +81,22 @@ class QuoteItem extends Model
     {
         $margin =  $this->quote_price - $this->purchase_price;
 
-        return $margin;
+        return number_format($margin, 2);
     }
+
+    /**
+     * Get sales margin in €, multiplied by quantity.
+     *
+     * 
+     * @return float
+     */
+    public function getSalesMarginRowAttribute()
+    {
+        $margin =  $this->sales_margin * $this->qty;
+
+        return number_format($margin, 2);
+    }
+
 
     /**
      * Get sales margin in %
@@ -94,5 +109,29 @@ class QuoteItem extends Model
         $margin =  ($this->sales_margin / $this->quote_price) * 100;
 
         return number_format($margin, 2);
+    }
+
+    /**
+     * Get purchase price with 2 decimals
+     *
+     * 
+     * @return float
+     */
+    public function getPurchasePriceDecimalsAttribute()
+    {
+        $price =  $this->purchase_price;
+
+        return number_format($price, 2);
+    }
+
+    /**
+     * Get quote price with 2 decimals
+     *
+     * 
+     * @return float
+     */
+    public function getQuotePriceDecimalsAttribute()
+    {
+        return number_format($this->quote_price, 2);
     }
 }

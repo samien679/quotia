@@ -1,18 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Tarjous #') }}{{ session('activequote') }}
+            {{ __('Tarjous #') }}{{ $quote->id }}
         </h2>
     </x-slot>
 
 <x-slot name="info">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-             {{ __('Yhteensä: ') }}<strong>{{ $sumOfQuote }}</strong>{{ __('€ alv0%') }}
+             {{ __('Yhteensä: ') }}<strong>{{ $quote->sum_zero_vat }}</strong>{{ __('€ alv0%') }}
     </x-slot>
 
 <x-slot name="info2">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-             {{ __('Yhteensä: ') }}<strong>{{ $sumOfQuote }}</strong>{{ __('€ alv0%') }}
+             {{ __('Kokonaiskate: ') }}<strong>{{ $quote->sales_margin_value }}</strong>{{ __('€ alv0%') }}
     </x-slot>
 
     <div class="mt-8">
@@ -29,9 +29,9 @@
                             <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Nimike</th>
                             <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Määrä</th>
                             <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Ostohinta á</th>
-                            <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Myyntihinta á / rivi</th>
-                            <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Riviarvo</th>
-                            <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Kate</th>
+                            <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Myyntihinta á</th>
+                            <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Yhteensä</th>
+                            <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Kate / rivi</th>
                             <th class="py-1 pr-2 bg-green-500 border border-green-600 text-right">Vero</th>
                             <th class="py-1 pr-2 bg-green-500 border border-green-600 text-center">Muokkaa</th>
 
@@ -46,10 +46,10 @@
                             <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->product_number }}</td>
                             <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->name1 }}{{ $quoteItem->name2 }}</td>
                             <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->qty }} {{ $quoteItem->unit }}</td>
-                            <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->purchase_price }}{{ __(' €') }}</td>
-                            <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->quote_price }} | {{ $quoteItem->item_value }}{{ __(' €') }}</td>
-                            <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->vat }}{{ __(' %') }}</td>
-                            <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->sales_margin_percentage }}{{ __('%  ') }}{{ $quoteItem->sales_margin }}{{ __('€') }}</td>
+                            <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->purchase_price_decimals }}{{ __(' €') }}</td>
+                            <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->quote_price_decimals }} {{ __(' €') }}</td>
+                            <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->item_value }}{{ __(' €') }}</td>
+                            <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->sales_margin_percentage }}{{ __('%  ') }}{{ $quoteItem->sales_margin_row }}{{ __('€') }}</td>
                             <td class="py-1 pr-2 border border-green-600">{{ $quoteItem->vat }}{{ __(' %') }}</td>
                             <td class="text-center py-1 pr-2  border border-green-600">
                                 <div class="flex flex-row justify-around">

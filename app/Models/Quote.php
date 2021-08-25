@@ -118,4 +118,22 @@ class Quote extends Model
 
         return $sumOfQuote;
     }
+
+    /**
+     * Get quote's total sales margin in €
+     *
+     * 
+     * @return float
+     */
+    public function getSalesMarginValueAttribute()
+    {
+
+        // Hae tietokannasta aktiivisen tarjouksen tarjousrivit
+        $quoteItems = QuoteItem::where('quote_id', session('activequote'))->get();
+
+        // Kaikkien rivien loppusumman yhteenlasku
+        $salesMargin = $quoteItems->sum('sales_margin_row');
+
+        return $salesMargin;
+    }
 }
