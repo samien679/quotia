@@ -34,10 +34,10 @@ require __DIR__ . '/auth.php';
 
 Route::get('/quotes/{quote}/purchase-edit', [QuoteController::class, 'purchaseEdit'])->name('purchase-edit');
 Route::get('/quotes/{quote}/sales-edit', [QuoteController::class, 'salesEdit'])->name('sales-edit');
-Route::resource('quotes', QuoteController::class);
+Route::resource('quotes', QuoteController::class)->middleware('auth');
 
-Route::resource('purchase_items', PurchaseItemController::class);
-Route::resource('quote_items', QuoteItemController::class);
+Route::resource('purchase_items', PurchaseItemController::class)->middleware('auth');
+Route::resource('quote_items', QuoteItemController::class)->middleware('auth');
 
 // PDF generator
-Route::get('/quotes/{quote}/getpdf', [PDFController::class, 'generate']);
+Route::get('/quotes/{quote}/getpdf', [PDFController::class, 'generate'])->middleware('auth');
