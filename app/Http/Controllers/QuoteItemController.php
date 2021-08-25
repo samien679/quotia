@@ -6,6 +6,8 @@ use App\Models\QuoteItem;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreQuoteItemRequest;
 
+use Illuminate\Support\Facades\Auth;
+
 class QuoteItemController extends Controller
 {
     /**
@@ -44,11 +46,12 @@ class QuoteItemController extends Controller
             'name2' => $request->name2,
             'qty' => $request->qty,
             'unit' => $request->unit,
+            'purchase_price' => $request->purchase_price,
             'quote_price' => $request->quote_price,
             'vat' => $request->vat,
+            'supplier' => $request->supplier,
             'note' => $request->note
         ]);
-
 
         return redirect()->back();
     }
@@ -59,7 +62,7 @@ class QuoteItemController extends Controller
      * @param  \App\Models\QuoteItem  $quoteItem
      * @return \Illuminate\Http\Response
      */
-    public function show(QuoteItem $quoteItem)
+    public function show($id)
     {
         //
     }
