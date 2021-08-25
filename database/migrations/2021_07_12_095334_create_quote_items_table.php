@@ -13,16 +13,19 @@ class CreatePurchaseItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('purchase_items', function (Blueprint $table) {
+        Schema::create('quote_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('quote_id')->constrained();
-            $table->string('product_number');
-            $table->string('name1')->nullable();
+            $table->string('product_number')->nullable();
+            $table->string('name1');
             $table->string('name2')->nullable();
             $table->float('qty');
-            $table->string('unit')->nullable();
+            $table->string('unit');
             $table->float('purchase_price');
-            $table->string('supplier');
+            $table->float('quote_price');
+            $table->integer('vat');
+            $table->string('supplier')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
