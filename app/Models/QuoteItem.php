@@ -31,8 +31,10 @@ class QuoteItem extends Model
         'name2',
         'qty',
         'unit',
+        'purchase_price',
         'quote_price',
         'vat',
+        'supplier',
         'note'
     ];
 

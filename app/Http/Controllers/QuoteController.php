@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Quote;
-use App\Models\PurchaseItem;
 use App\Models\QuoteItem;
 
 
@@ -47,10 +46,8 @@ class QuoteController extends Controller
 
         session(['activequote' => $quote->id]);
 
-
-
         return redirect()->action(
-            [QuoteController::class, 'purchaseEdit'],
+            [QuoteController::class, 'edit'],
             ['quote' => $quote->id]
         );
     }
@@ -67,42 +64,22 @@ class QuoteController extends Controller
     }
 
     /**
-     * Show the view for editing the specified quotes purchase items.
+     * Show the view for editing the specified quotes items.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function purchaseEdit($id)
+    public function edit($id)
     {
         session(['activequote' => $id]);
 
-        $purchaseItems = PurchaseItem::all()->where('quote_id', $id);
-
-        return view('purchase-edit', compact('purchaseItems'));
-    }
-
-    /**
-     * Show the view for editing the specified quotes quote/sales items.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function salesEdit($id)
-    {
-        session(['activequote' => $id]);
-
-        // Hae tietokannasta aktiivisen tarjouksen kulurivit
-        $purchaseItems = PurchaseItem::where('quote_id', $id)->get();
-
-        // Hae tietokannasta aktiivisen tarjouksen tarjousrivit
         $quoteItems = QuoteItem::where('quote_id', $id)->get();
 
         // Kaikkien rivien loppusumman yhteenlasku
-        $sumOfQuote = $quoteItems->sum('item_value');
+        $sumOfQuote = $quoteItems->sum('sales_value');
 
-        return view('sales-edit', compact('purchaseItems', 'quoteItems', 'sumOfQuote'));
+        return view('edit', compact('quoteItems', 'sumOfQuote'));
     }
-
 
     /**
      * Remove the specified resource from storage.

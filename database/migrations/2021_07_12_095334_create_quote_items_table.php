@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePurchaseItemsTable extends Migration
+class CreateQuoteItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -37,6 +37,6 @@ class CreatePurchaseItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchase_items');
+        Schema::dropIfExists('quote_items');
     }
 }
