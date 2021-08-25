@@ -25,12 +25,14 @@ class StoreQuoteItemRequest extends FormRequest
     {
         return [
             'product_number' => 'nullable|string|max:30',
-            'name1' => 'nullable|string|max:35',
-            'name2' => 'nullable|string|max:35',
-            'qty' => 'numeric|max:99999',
-            'unit' => 'string|max:3',
-            'quote_price' => 'numeric|max:99999',
-            'vat' => 'numeric|max:99',
+            'name1' => 'required|string|max:25',
+            'name2' => 'nullable|string|max:25',
+            'qty' => 'required|numeric|max:999999',
+            'unit' => 'required|string|max:3',
+            'purchase_price' => 'required|numeric|max:999999',
+            'quote_price' => 'required|numeric|max:999999',
+            'vat' => 'required|numeric|max:99',
+            'supplier' => 'nullable|string|max:25',
             'note' => 'nullable|string|max:50'
         ];
     }

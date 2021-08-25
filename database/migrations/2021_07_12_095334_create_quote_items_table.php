@@ -23,7 +23,7 @@ class CreatePurchaseItemsTable extends Migration
             $table->string('unit');
             $table->float('purchase_price');
             $table->float('quote_price');
-            $table->integer('vat');
+            $table->float('vat');
             $table->string('supplier')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();
