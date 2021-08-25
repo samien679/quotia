@@ -76,7 +76,7 @@ class QuoteController extends Controller
         $quoteItems = QuoteItem::where('quote_id', $id)->get();
 
         // Kaikkien rivien loppusumman yhteenlasku
-        $sumOfQuote = $quoteItems->sum('sales_value');
+        $sumOfQuote = $quoteItems->sum('item_value');
 
         return view('edit', compact('quoteItems', 'sumOfQuote'));
     }

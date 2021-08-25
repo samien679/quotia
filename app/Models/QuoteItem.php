@@ -69,4 +69,30 @@ class QuoteItem extends Model
 
         return $vat * $this->quote_price * $this->qty;
     }
+
+    /**
+     * Get sales margin in €
+     *
+     * 
+     * @return float
+     */
+    public function getSalesMarginAttribute()
+    {
+        $margin =  $this->quote_price - $this->purchase_price;
+
+        return $margin;
+    }
+
+    /**
+     * Get sales margin in %
+     *
+     * 
+     * @return float
+     */
+    public function getSalesMarginPercentageAttribute()
+    {
+        $margin =  ($this->sales_margin / $this->quote_price) * 100;
+
+        return number_format($margin, 2);
+    }
 }

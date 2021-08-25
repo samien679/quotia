@@ -28,15 +28,21 @@
             <!-- Page Heading -->
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between">
-                    <div class="">
+                    
+                    <div>
                     {{ $info }}
                     </div>
-                    <div class="">
-                    {{__('Optional slot')}}
-                    </div>
-                    <div class="">
+                    
+                    @if (isset($info2))   
+                        <div>
+                        {{ $info2 }}
+                        </div> 
+                    @endif
+                    
+                    <div>
                     {{ $header }}
                     </div>
+
                 </div>
             </header>
 
