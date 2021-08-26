@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SettingController extends Controller
 {
@@ -44,30 +45,32 @@ class SettingController extends Controller
      * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function show(Setting $setting)
+    public function show(User $user)
     {
         //
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing user settings.
      *
-     * @param  \App\Models\Setting  $setting
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(Setting $setting)
+    public function edit()
     {
-        //
+        $user = Auth::user();
+        //dd($user);
+        return view('settings', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Setting  $setting
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Setting $setting)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -75,10 +78,10 @@ class SettingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Setting  $setting
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Setting $setting)
+    public function destroy(User $user)
     {
         //
     }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuoteItemController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\SettingController;
 use App\Models\Quote;
 
 
@@ -41,4 +42,5 @@ Route::resource('quote_items', QuoteItemController::class)->middleware('auth');
 Route::get('/quotes/{quote}/getpdf', [PDFController::class, 'generate'])->middleware('auth')->name('getpdf');
 
 // Settings
-Route::resource('settings', SettingController::class)->middleware('auth');
+Route::get('/settings', [SettingController::class, 'edit'])->middleware('auth')->name('settings');
+Route::post('/settings', [SettingController::class, 'store'])->middleware('auth')->name('settings.store');

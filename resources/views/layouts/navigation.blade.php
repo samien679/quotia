@@ -47,11 +47,21 @@
 
                                 <x-dropdown-link :href="route('getpdf', session('activequote'))" onclick="event.preventDefault();
                                                     this.closest('form').submit();">
-                                    {{ __('Export PDF') }}
+                                    {{ __('Vie PDF') }}
                                 </x-dropdown-link>
                             </form>
 
                         @endif
+
+                        <!-- Settings -->
+                        <form method="GET" action="{{ route('settings') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('settings')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Asetukset') }}
+                            </x-dropdown-link>
+                        </form>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -59,7 +69,7 @@
 
                             <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Kirjaudu ulos') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -106,18 +116,29 @@
 
                         <x-dropdown-link :href="route('getpdf', session('activequote'))" onclick="event.preventDefault();
                                                     this.closest('form').submit();">
-                            {{ __('Export PDF') }}
+                            {{ __('Vie PDF') }}
                         </x-dropdown-link>
                     </form>
 
                 @endif
+
+                <!-- Settings -->
+                <form method="GET" action="{{ route('settings') }}">
+                    @csrf
+
+                    <x-responsive-nav-link :href="route('settings')" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Asetukset') }}
+                    </x-responsive-nav-link>
+                </form>
+
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Kirjaudu ulos') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
