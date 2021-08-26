@@ -15,40 +15,64 @@
                         @csrf
                         <div class="flex flex-wrap justify-start border rounded-lg shadow-sm p-3 mt-4">
 
+                            <!-- Yrityksen nimi -->
+                            <div>
+                                <x-label for="company_name" :value="__('Yrityksen nimi')" />
+                                <x-input id="company_name" class="flex mt-1" type="text" name="company_name"
+                                    :value="old('company_name'), $user->company_name" autofocus />
+                            </div>
+
                             <!-- Puhelinnumero -->
                             <div>
                                 <x-label for="phone_numbero" :value="__('Puhelinnumero')" />
                                 <x-input id="phone_number" class="flex mt-1" type="text" name="phone_number"
-                                    :value="old('phone_number'), $user->phone_number" autofocus />
+                                    :value="old('phone_number'), $user->phone_number" />
                             </div>
 
+                            <!-- Katuosoite -->
+                            <div>
+                                <x-label for="street_address" :value="__('Katuosoite')" />
+                                <x-input id="street_address" class="flex mt-1" type="text" name="street_address"
+                                    :value="old('street_address'), $user->street_address" />
+                            </div>
 
+                            <!-- Postinumero -->
+                            <div>
+                                <x-label for="postal_code" :value="__('Postinumero')" />
+                                <x-input id="postal_code" class="flex mt-1" type="text" name="postal_code"
+                                    :value="old('postal_code'), $user->postal_code" />
+                            </div>
 
-                            <!-- Luo tuote- painike -->
-                            <x-quotia.add-item></x-quotia.add-item>
+                            <!-- Postitoimipaikka -->
+                            <div>
+                                <x-label for="city" :value="__('Postitoimipaikka')" />
+                                <x-input id="city" class="flex mt-1" type="text" name="city"
+                                    :value="old('city'), $user->city" />
+                            </div>
+
+                            <!-- Toimitusehdot -->
+                            <div>
+                                <x-label for="terms_of_delivery" :value="__('Toimitusehdot')" />
+                                <x-input id="terms_of_delivery" class="flex mt-1" type="text" name="terms_of_delivery"
+                                    :value="old('terms_of_delivery'), $user->terms_of_delivery" />
+                            </div>
+
+                            <!-- Tarjouksen voimassaoloaika -->
+                            <div>
+                                <x-label for="valid_days" :value="__('Tarjouksen voimassaoloaika (vrk)')" />
+                                <x-input id="valid_days" class="flex mt-1" type="number" name="valid_days"
+                                    :value="old('valid_days'), $user->valid_days" />
+                            </div>
+
+                            <!-- Tallenna asetukset -->
+                            <x-button class="">
+                                {{ __('Tallenna muutokset') }}
+                            </x-button>
 
                     </form>
-
-
-                    {{-- name'); --}}
-                    {{-- email')->unique() --}}
-                    {{-- p('email_verified --}}
-                    {{-- password'); --}}
-                    {{-- Token(); --}}
-                    {{-- phone_number')->n --}}
-                    {{-- company_name')->n --}}
-                    {{-- street_address')- --}}
-                    {{-- postal_code')->nu --}}
-                    {{-- city')->nullable( --}}
-                    {{-- terms_of_delivery --}}
-                    {{-- 'valid_days')->nu --}}
                 </div>
             </div>
-
         </div>
     </div>
-
-
-
 
 </x-app-layout>
