@@ -33,10 +33,12 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/quotes/{quote}/edit', [QuoteController::class, 'edit'])->name('edit');
-
 Route::resource('quotes', QuoteController::class)->middleware('auth');
 
 Route::resource('quote_items', QuoteItemController::class)->middleware('auth');
 
 // PDF generator
 Route::get('/quotes/{quote}/getpdf', [PDFController::class, 'generate'])->middleware('auth')->name('getpdf');
+
+// Settings
+Route::resource('settings', SettingController::class)->middleware('auth');

@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('street_address')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('city')->nullable();
+            $table->string('terms_of_delivery')->nullable();
+            $table->integer('valid_days')->nullable();
             $table->timestamps();
         });
     }

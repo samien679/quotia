@@ -134,6 +134,19 @@ class Quote extends Model
         // Kaikkien rivien loppusumman yhteenlasku
         $salesMargin = $quoteItems->sum('sales_margin_row');
 
-        return $salesMargin;
+        return number_format($salesMargin, 2);
+    }
+
+    /**
+     * Get quote's total sales margin in %
+     *
+     * 
+     * @return float
+     */
+    public function getSalesMarginPercentageAttribute()
+    {
+        $salesMargin = ($this->sales_margin_value / $this->sum_zero_vat) * 100;
+
+        return number_format($salesMargin, 2);
     }
 }
