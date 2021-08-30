@@ -145,8 +145,13 @@ class Quote extends Model
      */
     public function getSalesMarginPercentageAttribute()
     {
-        $salesMargin = ($this->sales_margin_value / $this->sum_zero_vat) * 100;
+        // Estä jako 0:lla
+        if ($this->sum_zero_vat == 0) {
+            return '-';
+        } else {
 
-        return number_format($salesMargin, 2);
+            $salesMargin = ($this->sales_margin_value / $this->sum_zero_vat) * 100;
+            return number_format($salesMargin, 2);
+        }
     }
 }

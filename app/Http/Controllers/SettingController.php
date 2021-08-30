@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreSettingsRequest;
+
 
 class SettingController extends Controller
 {
@@ -31,12 +33,23 @@ class SettingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreSettingsRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSettingsRequest $request)
     {
-        //
+        $settings = User::where('id', Auth::id())->update([
+
+            'company_name' => $request->company_name,
+            'phone_number' => $request->phone_number,
+            'street_address' => $request->street_address,
+            'postal_code' => $request->postal_code,
+            'city' => $request->city,
+            'terms_of_delivery' => $request->terms_of_delivery,
+            'valid_days' => $request->valid_days
+        ]);
+
+        return redirect()->back();
     }
 
     /**

@@ -12,8 +12,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg flex justify-between">
-                <div class="p-6 bg-white border-b border-gray-200 w-2/3">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg flex justify-between ">
+                <div class="p-6 bg-white border-b border-gray-200 w-2/3 ">
                     Tervetuloa! Aloita uusi tarjous vihreästä painikkeesta tai valitse listalta muokattavaksi.
                 </div>
 
@@ -27,18 +27,22 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
-                            <div class="bg-white rounded-lg shadow">
-                                <ul class="divide-y divide-gray-100">
+                            <h2 class="text-2xl mb-4 p-4 border-b">
+                                Historia
+                            </h2>
 
-                                    @foreach ($quotes as $quote)
-                                        <li class="p-3 hover:bg-blue-600 hover:text-blue-200">
-                                            <a class="block" href="{{ route('quotes.edit', $quote->id) }}">Tarjous no.
-                                                {{ $quote->id }}, luotu {{ $quote->created }}</a>
-                                        </li>
-                                    @endforeach
+                            <ul class="pl-16 pt-1 divide-y divide-gray-100">
 
-                                </ul>
-                            </div>
+                                <!-- Show history of users saved quotes -->
+                                @foreach ($quotes as $quote)
+                                    <a class="block" href="{{ route('quotes.edit', $quote->id) }}">Tarjous no.
+                                        {{ $quote->id }}, luotu {{ $quote->created }}</a>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+
+
                         </div>
                     </div>
                 </div>
