@@ -34,6 +34,10 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/quotes/{quote}/edit', [QuoteController::class, 'edit'])->name('edit');
+
+// Store a new client
+Route::post('/clients)', [ClientController::class, 'store'])->name('clients.store');
+
 Route::resource('quotes', QuoteController::class)->middleware('auth');
 
 Route::resource('quote_items', QuoteItemController::class)->middleware('auth');

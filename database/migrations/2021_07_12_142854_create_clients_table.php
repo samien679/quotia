@@ -17,7 +17,7 @@ class CreateClientsTable extends Migration
             $table->id();
             $table->string('client_name');
             $table->string('client_contact_person')->nullable();
-            $table->string('client_VAT')->nullable();
+
             $table->string('client_telephone')->nullable();
             $table->string('client_email')->nullable();
             $table->string('client_address')->nullable();
