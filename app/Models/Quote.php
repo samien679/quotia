@@ -88,7 +88,7 @@ class Quote extends Model
     }
 
     /**
-     * Get due date (created_at + 30d)
+     * Get due date (Fixed 30d at the moment)
      *
      * 
      * @return date

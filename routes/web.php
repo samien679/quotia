@@ -42,7 +42,7 @@ Route::post('/clients', [ClientController::class, 'store'])->name('clients.store
 
 Route::resource('quotes', QuoteController::class)->middleware('auth')->only('index', 'edit');
 
-//Route::resource('quote_items', QuoteItemController::class)->middleware('auth');
+Route::resource('quote_items', QuoteItemController::class)->middleware('auth')->only('store', 'destroy');
 
 // PDF generator
 Route::get('/quotes/{quote}/getpdf', [PDFController::class, 'generate'])->middleware('auth')->name('getpdf');
