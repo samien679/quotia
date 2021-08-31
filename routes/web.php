@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\PurchaseItemController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuoteItemController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SettingController;
-use App\Models\Quote;
-
+use App\Http\Controllers\ClientController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,14 +34,15 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/quotes/{quote}/edit', [QuoteController::class, 'edit'])->name('edit');
+Route::get('/quotes/{quote}/edit', [QuoteController::class, 'edit'])->name('quotes.edit')->middleware('auth');
 
-// Store a new client
-Route::post('/clients)', [ClientController::class, 'store'])->name('clients.store');
+// Store a new client and create a new quote
+Route::post('/clients', [ClientController::class, 'store'])->name('clients.store')->middleware(('auth'));
 
-Route::resource('quotes', QuoteController::class)->middleware('auth');
 
-Route::resource('quote_items', QuoteItemController::class)->middleware('auth');
+Route::resource('quotes', QuoteController::class)->middleware('auth')->only('index', 'edit');
+
+//Route::resource('quote_items', QuoteItemController::class)->middleware('auth');
 
 // PDF generator
 Route::get('/quotes/{quote}/getpdf', [PDFController::class, 'generate'])->middleware('auth')->name('getpdf');

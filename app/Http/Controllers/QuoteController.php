@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Quote;
 use App\Models\QuoteItem;
+use App\Models\Client;
+use App\Http\Controllers\ClientController;
+
 
 
 class QuoteController extends Controller
@@ -17,7 +20,9 @@ class QuoteController extends Controller
      */
     public function index()
     {
-        $quotes = Quote::all()->where('user_id', Auth::user()->id);
+
+
+        $quotes = Quote::where('user_id', Auth::user()->id)->get();
 
         return view('dashboard', compact('quotes'));
     }
@@ -35,21 +40,12 @@ class QuoteController extends Controller
     /**
      * Create a new quote and persist it in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($client)
     {
-        $quote = Quote::create([
-            'user_id' => Auth::user()->id
-        ]);
-
-        session(['activequote' => $quote->id]);
-
-        return redirect()->action(
-            [QuoteController::class, 'edit'],
-            ['quote' => $quote->id]
-        );
+        // SIIRRETTY Clientcontrolleriin 
     }
 
     /**
@@ -65,8 +61,8 @@ class QuoteController extends Controller
 
     /**
      * Show the view for editing the specified quotes items.
-     *
      * @param  int  $id
+     * @param  int  $client
      * @return \Illuminate\Http\Response
      */
     public function edit($id)

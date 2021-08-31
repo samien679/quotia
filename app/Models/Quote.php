@@ -20,7 +20,6 @@ class Quote extends Model
      */
     protected $fillable = [
         'user_id',
-        'purchase_item_id',
         'quote_item_id',
         'client_id',
         'reference1',
@@ -56,14 +55,15 @@ class Quote extends Model
 
 
 
-
     /**
-     * Get the conneted purchase items.
+     * Get the user that owns the quote.
      */
-    public function purchaseItems()
+    public function user()
     {
-        return $this->hasMany(PurchaseItem::class);
+        return $this->belongsTo(User::class);
     }
+
+
 
     /**
      * Get the conneted quote items.

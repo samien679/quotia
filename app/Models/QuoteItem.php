@@ -47,6 +47,14 @@ class QuoteItem extends Model
     }
 
     /**
+     * Get the comments for the blog post.
+     */
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
+    }
+
+    /**
      * Get the sales value (qty * price) of item
      *
      * 

@@ -22,7 +22,7 @@
                 <!-- Lomake uuden asiakkaan tietojen syöttämiseksi -->
                 <form method="POST" id="newQuote" action="{{ route('clients.store') }}">
                     @csrf
-                    <div class="flex flex-wrap border rounded-lg shadow-lg p-4 m-4 mr-auto">
+                    <div class="flex flex-wrap border rounded-lg shadow-md p-4 m-4 mr-auto">
 
 
                         <!-- Asiakasyrityksen nimi -->
@@ -55,9 +55,9 @@
 
                         <!-- Lähiosoite -->
                         <div>
-                            <x-label for="client_adress" :value="__('Katuosoite')" />
-                            <x-input id="client_adress" class="flex mt-1" type="text" name="client_adress"
-                                :value="old('client_adress')" required />
+                            <x-label for="client_address" :value="__('Katuosoite')" />
+                            <x-input id="client_address" class="flex mt-1" type="text" name="client_address"
+                                :value="old('client_address')" required />
                         </div>
 
                         <!-- Postinumero -->

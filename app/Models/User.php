@@ -47,4 +47,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the conneted purchase items.
+     */
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
+    }
+
+    /**
+     * Get the conneted quote.
+     */
+    public function quote()
+    {
+        return $this->hasMany(QuoteItem::class);
+    }
 }
